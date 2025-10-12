@@ -1,0 +1,498 @@
+.containerLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.formLogin {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.loginh1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.divLogoLogin {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px
+}
+.imgLogin {
+  width: 80px;
+}
+.divInputEmail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.divInputEmail label {
+  font-weight: bold;
+}
+.divInputEmail input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+.divInputSenha {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.divInputSenha label {
+  font-weight: bold;
+}
+.divInputSenha input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;  
+  outline: none;
+}
+.divButton {
+  text-align: center;
+  margin-top: 10px;
+}
+.divButton button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.divButton button:hover {
+  background-color: #0056b3;
+}
+.input-icon {
+  position: relative; 
+  left: 230px;
+  top: -26px;
+}
+.input-olho {
+  position: relative; 
+  left: 230px;
+  top: -26px;
+}
+.divLinks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -20px;
+  margin-bottom: 10px;
+
+}
+.linkRecuperarSenha, .linkCriarConta {
+  text-decoration: none;
+  color: orangered;
+  transition: text-decoration 0.3s ease;
+}
+.linkCriarConta:hover, .linkRecuperarSenha:hover {
+  text-decoration: underline;
+}
+.loading-indicator {
+  margin: 20px auto;
+  border: 4px solid #f3f3f3; /* fundo */
+  border-top: 4px solid #3498db; /* cor animada */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.imgLogo {
+  width: 50px;
+}
+
+.linkprojetos {
+  text-decoration: none;
+  color: orangered;
+  font-weight: bold;
+}
+.linkprojetos:hover {
+  text-decoration: underline;
+}
+.divImgHome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px); /* Ajuste a altura conforme necessário */
+}
+.buttonHome {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+.buttonHome:hover {
+  background-color: #0056b3;
+}
+.containerCriarProjeto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.formCriarProjeto {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.fromnomeProjeto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.fromnomeProjeto label {
+  font-weight: bold;
+}
+.fromOrcamento {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.fromOrcamento label {
+  font-weight: bold;
+}
+.fromDescricao {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.fromDescricao label {
+  font-weight: bold;
+}
+.formData {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.formData label {
+  font-weight: bold;
+}
+.fromCategoria {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.fromCategoria label {
+  font-weight: bold;
+}
+.botoes {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.divButtonCriarProjeto button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.divButtonCriarProjeto button:hover {
+  background-color: #0056b3;
+}
+.divButtonLimpar button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.divButtonCriarProjeto button:hover {
+  background-color: #0056b3;
+}
+.divButtonLimpar button:hover {
+  background-color: #0056b3;
+}
+.fromnomeProjeto input,.fromOrcamento input,.fromOrcamento input,.formData input {
+  padding: 10px;
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+.fromDescricao input {
+  padding: 10px;
+  overflow-x: auto;
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+.fromSelect   {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+.ProjetoSalvo {
+  width: 100vw;
+  text-align: center;
+  background-color: rgb(53, 235, 53);
+  font-weight: bold;
+  padding: 10px;
+}
+
+.ConteinerPai {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.nav_bar {
+  width: 100%;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img img {
+  width: 70px;
+}
+.Pesquisa {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input input {
+  outline: none;
+  padding: 10px 20px;
+  width: 400px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.icon {
+  position: relative;
+  left: 440px;
+  margin-top: 5px;
+  color: #a8a6a6;
+} 
+.btn-busca {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  background-color:  orangered;
+  font-weight: bold;
+  transition: background-color 0.3s ease ;
+}  
+.btn-busca:hover {
+  background-color:rgb(201, 58, 6) ;
+}
+.main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.div-btn-criarProjeto {
+  margin-top: 20px;
+  
+}
+
+.btn-criarProjeto  {
+  padding: 10px 30px;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color:  #007bff;
+  border: none;
+  cursor: pointer;
+  transition:  background-color 0.3s ease;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+.btn-criarProjeto:hover {
+  background-color: #0056b3;
+}
+.div-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  padding: 1.5rem;
+}
+
+.card {
+  background: linear-gradient(145deg, #ffffff, #f3f3f3);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  display: flex;
+  width: 230px;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card_header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: -10px;
+}
+.card-orcamento {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.card_icon {
+  font-size: 28px;
+  color: #f37734;
+}
+.card-descricao {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.card_title {
+  font-size: 1.1rem;
+  color: #424242;
+  font-weight: 700;
+}
+
+.btn_detalhes {
+  background-color: #f37734;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn_detalhes:hover {
+  background-color: #dd5810;
+}
+.btn-filtro {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  background-color:  rgb(31, 189, 31);
+  font-weight: bold;
+  transition: background 0.3s ease;
+  margin-left: 5px;
+}
+.btn-filtro:hover {
+  background: green;
+}
+.card-filtros {
+  position: absolute;
+  border: 1px solid #ccc;
+  background-color: rgb(243, 243, 243);
+  border-radius: 5px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+.div-campos {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.div-campos label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.div-campos input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+.div-campos button {
+  padding: 10px 20px;
+  background-color:  #007bff;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+  transition:  background-color 0.3s ease;
+  cursor: pointer;
+}
+.div-campos button:hover {
+  background-color: #0056b3;
+}
+.icone-X {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 20px;
+  cursor: pointer;
+}
+.todos-projetos {
+  display: flex;
+  width: 100%;
+  text-align: center;
+}
+.todos-projetos label {
+  font-weight: bold;
+}
+.todos-projetos input {
+  margin-top: 5px;
+  margin-left: 7px;
+}
+.btn {
+  margin-bottom: -35px;
+}
