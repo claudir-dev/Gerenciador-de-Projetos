@@ -283,9 +283,9 @@ app.post("/api/buscar-projeto", (req, res) => {
         
         console.log('Projetos encontrados:', todos_projetos)    
        return res.json(todos_projetos)   
-    } catch (err) {
-        console.error('erro ao busca todos os projetos do usuario', err)
-        return res.status(500).json({error})
+    } catch (error) {
+        console.error('erro ao busca todos os projetos do usuario', error)
+        return res.status(500).json({error: 'nenhum projeto encontrado'})
     }        
   }
 

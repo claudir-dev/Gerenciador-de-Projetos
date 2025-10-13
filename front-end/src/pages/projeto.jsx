@@ -1,7 +1,7 @@
 import imgLogin from "../img/img-login2.png"
 import {use, useState} from 'react'
 import {FaSearch, FaFolder, FaTimes, FaCalendarAlt, FaMoneyBillAlt, } from 'react-icons/fa'
-import {Link} from 'react-router-dom'
+import {Link, Links} from 'react-router-dom'
 import "../App.css";
 export default function Projeto () {
     const [projeto, setProjeto] = useState()
@@ -93,6 +93,9 @@ export default function Projeto () {
             setLoading(false) 
         }
     }
+    const edita_projeto = async () => {
+
+    }
     return (
         <div className="ConteinerPai">
             {divFiltros && <div className="card-filtros"> 
@@ -158,7 +161,7 @@ export default function Projeto () {
                     {Aparecer && (
                     <div className="div-cards">
                         {resgata.map((item, i) => (
-                        <div className="card" key={i}>
+                        <div className="card" key={item.id}>
                             <div className="card_header">
                             <FaFolder className="card_icon" />
                             <h2 className="card_title">{item.nome}</h2>
@@ -174,7 +177,7 @@ export default function Projeto () {
                                 <FaCalendarAlt style={{marginRight: '5px'}}></FaCalendarAlt>
                                 {item.data ? item.data : 'Data não encontrada'}
                             </div>
-                            <button className="btn_detalhes">Ver detalhes</button>
+                            <Link className="btn_detalhes" to={`/EditarProjeto${item.id}`}  >Ver detalhes</Link>
                         </div>
                         ))}
                     </div>

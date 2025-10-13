@@ -396,7 +396,9 @@
 .card-descricao {
   display: flex;
   flex-wrap: wrap;
-  overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  
 }
 .card_title {
   font-size: 1.1rem;
@@ -413,6 +415,8 @@
   font-size: 0.8rem;
   cursor: pointer;
   transition: background 0.2s ease;
+  text-decoration: none;
+  text-align: center;
 }
 
 .btn_detalhes:hover {
