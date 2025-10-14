@@ -282,7 +282,7 @@ app.post("/api/buscar-projeto", (req, res) => {
             `).all(id_buscar_projeto)
         
         console.log('Projetos encontrados:', todos_projetos)    
-       return res.json(todos_projetos)   
+       return res.json(todos_projetos)    
     } catch (error) {
         console.error('erro ao busca todos os projetos do usuario', error)
         return res.status(500).json({error: 'nenhum projeto encontrado'})
@@ -329,9 +329,9 @@ app.post("/api/buscar-projeto", (req, res) => {
     return res.status(500).json({error: "Error interno no servidor" });
   }
 });
-app.post('/busca/projeto/banco', (req, res) => {
+app.post('/busca/edita/projeto', (req, res) => {
     const {id} = req.body
-    console.log(id)
+    console.log('id do projeto:',id)
 
     try {
         const busca_projeto = db.prepare(`
@@ -342,8 +342,8 @@ app.post('/busca/projeto/banco', (req, res) => {
             console.log('Projeto não encontrado')
             return res.status(400).json({error: 'projeto não encontrado'})
         }
-
-        return res.json(busca_projeto)
+        console.log('projeto encontrado:', busca_projeto)
+        return res.json([busca_projeto])
     } catch (error) {
         console.error('erro ao realiza busca no banco de dados')
         return res.status(500).json({error: 'error interno no servidor'})

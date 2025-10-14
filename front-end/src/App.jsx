@@ -20,7 +20,7 @@ function App() {
         <Route path="/ResetSenha" element={<ResetSenha />} />
         <Route path="/criar-projeto" element={<CriarProjeto />} />
         <Route path="/projeto" element={<Projeto />} />
-        <Route path='projeto/Editar-Projeto' element={<EditarProjeto />} />
+        <Route path='projeto/Editar/Projeto' element={<EditarProjeto />} />
       </Routes>
     </BrowserRouter>
   );

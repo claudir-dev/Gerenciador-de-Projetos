@@ -7,11 +7,10 @@ export default function EditarProjeto () {
     const [divAparecer, setdivAparecer] = useState(false)
     const location = useLocation()
     const id = SearchParams.get('id')
-    console.log(id)
     useEffect(() => {
         const busca_edita = async () => {
             try {
-                const url = 'http://localhost:3000/busca/projeto/banco'
+                const url = 'http://localhost:3001/busca/edita/projeto'
                 const busca_projeto_servidor = await fetch(url, {
                     method: 'POST',
                     headers: {
@@ -22,7 +21,9 @@ export default function EditarProjeto () {
                 const resposta_servidor = await busca_projeto_servidor.json()
                 if(busca_projeto_servidor.ok) {
                     setdivAparecer(true)
+                    console.log('projeto encotrado',resposta_servidor)
                 } else {
+                    setdivAparecer(false)
                     console.log('Error interno no servidor', busca_projeto_servidor.error)
                     alert(resposta_servidor.error)
                 }
@@ -40,7 +41,7 @@ export default function EditarProjeto () {
     return (
         <div>
             <div>
-                <h1>ola</h1>
+                {div}
             </div>
         </div>
     )

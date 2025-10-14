@@ -177,7 +177,7 @@ export default function Projeto () {
                                 <FaCalendarAlt style={{marginRight: '5px'}}></FaCalendarAlt>
                                 {item.data ? item.data : 'Data não encontrada'}
                             </div>
-                            <Link className="btn_detalhes" to={`Editar-projeto?id=${item.id}`}>Ver detalhes</Link>
+                            <Link className="btn_detalhes" to={`Editar/projeto?id=${item.id}`}>Ver detalhes</Link>
                         </div>
                         ))}
                     </div>
