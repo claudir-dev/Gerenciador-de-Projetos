@@ -6,7 +6,7 @@ import EsqueciSenha from './pages/EsqueciSenha.jsx';
 import ResetSenha from './pages/ResetSenha.jsx';
 import CriarProjeto from './pages/CriarProjeto.jsx';
 import Projeto from './pages/projeto.jsx';
-import EditaProjeto from './pages/EditaProjeto.jsx';
+import EditarProjeto from './pages/EditaProjeto.jsx'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
         <Route path="/ResetSenha" element={<ResetSenha />} />
         <Route path="/criar-projeto" element={<CriarProjeto />} />
         <Route path="/projeto" element={<Projeto />} />
-        <Route path='EditarProjeto' element={<EditaProjeto />}></Route>
+        <Route path='projeto/Editar-Projeto' element={<EditarProjeto />} />
       </Routes>
     </BrowserRouter>
   );

@@ -329,6 +329,26 @@ app.post("/api/buscar-projeto", (req, res) => {
     return res.status(500).json({error: "Error interno no servidor" });
   }
 });
+app.post('/busca/projeto/banco', (req, res) => {
+    const {id} = req.body
+    console.log(id)
+
+    try {
+        const busca_projeto = db.prepare(`
+                SELECT * FROM projetos WHERE id = ? 
+            `).get(id)
+        
+        if(!busca_projeto) {
+            console.log('Projeto não encontrado')
+            return res.status(400).json({error: 'projeto não encontrado'})
+        }
+
+        return res.json(busca_projeto)
+    } catch (error) {
+        console.error('erro ao realiza busca no banco de dados')
+        return res.status(500).json({error: 'error interno no servidor'})
+    }   
+})
 
 const port =  3001
 
