@@ -500,3 +500,34 @@
 .btn {
   margin-bottom: -35px;
 }
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dados {
+  margin-top: -20px;
+}
+.linha {
+  border-bottom: 1px solid black;
+  margin-top: 30px;
+}
+.edita_card {
+  margin-left: 20px;
+}
+.linha {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.btn_editar {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.btn_editar:hover {
+  background-color: #0056b3;
+}

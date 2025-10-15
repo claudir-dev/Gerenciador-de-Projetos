@@ -343,7 +343,7 @@ app.post('/busca/edita/projeto', (req, res) => {
             return res.status(400).json({error: 'projeto não encontrado'})
         }
         console.log('projeto encontrado:', busca_projeto)
-        return res.json([busca_projeto])
+        return res.json(busca_projeto)
     } catch (error) {
         console.error('erro ao realiza busca no banco de dados')
         return res.status(500).json({error: 'error interno no servidor'})
