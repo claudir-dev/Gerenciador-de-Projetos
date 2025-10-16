@@ -9,6 +9,7 @@ export default function EditarProjeto () {
     const [divAparecer, setdivAparecer] = useState(false)
     const [captura, setcaptura] = useState([])
     const [divEditar, setdivEditar] = useState(false)
+    const [arry,setarray] = useState([])
     const id = SearchParams.get('id')
     useEffect(() => {
         const busca_edita = async () => {
@@ -23,6 +24,7 @@ export default function EditarProjeto () {
                 })
                 const resposta_servidor = await busca_projeto_servidor.json()
                 setcaptura([resposta_servidor])
+                setarray([resposta_servidor])
                 if(busca_projeto_servidor.ok) {
                     setdivAparecer(true)
                     console.log('projeto encotrado',resposta_servidor)
@@ -43,6 +45,13 @@ export default function EditarProjeto () {
     }, [id])
     const editar = () => {
         setdivEditar(true)
+    }
+    const atualizar = (id, campo, valor) => {
+        setarray(prev => 
+            prev.map(proj =>
+                proj.id === id ? { ...proj, [campo]: valor } : proj
+            )
+        )
     }
     return (
         <div className="conteiner">
@@ -67,19 +76,48 @@ export default function EditarProjeto () {
                 ))}
                 <div className="linha">
                 </div>
+            </div>
+            )}
+
+            <div className="div-atualizaar">
 
                 {divEditar && (
-                    <div className="card_editar">
-                        <div>
+                    <div className="card-atualizar">
+                        <div  className="edita-icon">
                             <FaTimes></FaTimes>
                         </div>
                         <div>
-                            
+                            {arry.map((proj) => (
+                                <div key={proj.id}>
+                                    <div className="edita-nome">
+                                        <label >Nome do projeto:</label>
+                                        <input type="text" value={proj.nome} onChange={(e) => atualizar(proj.id, 'nome', e.target.value)}></input>
+                                    </div>  
+                                    <div className="edita-descricao">
+                                        <label htmlFor="">Descrição do projeto: </label>
+                                        <input type="text" value={proj.descricao} onChange={(e) => atualizar(proj.id, 'descrição', e.target.value)} />
+                                    </div> 
+                                    <div className="edita-orcamento">
+                                        <label htmlFor="">Orcçamento do projeto: </label>
+                                        <input type="number" style={{width: '100%'}} value={proj.orcamento} onChange={(e) => atualizar(proj.id, 'orcamento', e.target.value)}/>
+                                    </div>  
+                                    <div className="edita-data">
+                                        <label htmlFor="">Data: </label>
+                                        <input type="date" value={proj.data} onChange={(e) => atualizar(proj.id, 'data', e.target.value )} />
+                                    </div>
+                                    <div className="edita-categoria">
+                                        <label htmlFor="">Categoria: </label>
+                                        <input type="text" placeholder="ex: pessoal..." value={proj.categoria}  onChange={(e)=> atualizar(proj.id,'categoria', e.target.value)} />
+                                    </div>
+                                    <div className="edita-buton">
+                                        <button>Atualizar</button>
+                                    </div>
+                                </div>    
+                            ))}
                         </div>
                     </div>
                 )}
-            </div>    
-            )}
-        </div>
+            </div>  
+        </div>      
     )
 }

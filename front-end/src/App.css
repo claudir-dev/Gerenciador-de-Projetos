@@ -270,11 +270,16 @@
   padding: 10px;
 }
 
-.ConteinerPai {
+.card-filtros {
+  margin: 0 auto;
+  position: relative;
+  left: 50%;
+  top: 50%;
+}
+.Pesquisa {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   height: 100vh;
 }
 .nav_bar {
@@ -353,6 +358,7 @@
   background-color: #0056b3;
 }
 .div-cards {
+  margin-top: -300px;
   display: flex;
   flex-wrap: wrap;
   gap: 1.2rem;
@@ -530,4 +536,36 @@
 }
 .btn_editar:hover {
   background-color: #0056b3;
+}
+.div-atualizaar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.edita-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+.edita-nome, .edita-descricao, .edita-data,.edita-categoria label {
+  display: flex;
+  flex-direction: column;
+  
+} 
+.edita-nome, .edita-descricao, .edita-orcamento, .edita-data,.edita-categoria input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+}
+.card-atualizar {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

@@ -1,8 +1,9 @@
 import imgLogin from "../img/img-login2.png"
 import {use, useState} from 'react'
-import {FaSearch, FaFolder, FaTimes, FaCalendarAlt, FaMoneyBillAlt, } from 'react-icons/fa'
+import {FaSearch, FaFolder, FaTimes, FaCalendarAlt, FaMoneyBillAlt, FaNapster, } from 'react-icons/fa'
 import {Link, Links} from 'react-router-dom'
 import "../App.css";
+import Navbar from "../components/NevBar.jsx";
 export default function Projeto () {
     const [projeto, setProjeto] = useState()
     const [Loading, setLoading] = useState(false)
@@ -98,6 +99,9 @@ export default function Projeto () {
     }
     return (
         <div className="ConteinerPai">
+            <div>
+                <Navbar></Navbar>
+            </div>
             {divFiltros && <div className="card-filtros"> 
                 <div className="icone-X">
                     <FaTimes onClick={FecharFiltros}></FaTimes>
@@ -125,14 +129,6 @@ export default function Projeto () {
                     </button>
                 </div>
             </div>}
-            <div className="nav_bar" style={{marginBottom: '30px', }}>
-                <div className="img">
-                    <img src={imgLogin} alt="foto-login" />
-                </div>
-                <div className="title">
-                    <h1>Meus projetos</h1>
-                </div>
-            </div>  
             <div className="Pesquisa">
                 <div className="icon">
                     <FaSearch></FaSearch>

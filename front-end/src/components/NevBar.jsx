@@ -9,7 +9,10 @@ export default function Navbar () {
                 </div>
                 <div>
                     <ul >
-                        <Link to="/projeto" className="linkprojetos">Projetos</Link>
+                        <Link to="/projeto" className="linkprojetos">Meus Projetos</Link>
+                    </ul>
+                    <ul>
+                        <Link></Link>
                     </ul>
                 </div>
             </div>
