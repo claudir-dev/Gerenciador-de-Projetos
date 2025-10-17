@@ -349,6 +349,27 @@ app.post('/busca/edita/projeto', (req, res) => {
         return res.status(500).json({error: 'error interno no servidor'})
     }   
 })
+app.post('/Atualizar/projeto', (req,res) => {
+    const {nome, descricao, orcamento, data, categoria, id} = req.body
+    
+    
+    if (!nome, !descricao, !orcamento, !categoria) {
+        console.log('variaveis nao possuem dados')
+        return res.status(400).json({error: 'variaveis nao possuem dados'})
+    }
+
+    try {
+        const atualiza = db.prepare(`
+                UPDATE projetos  SET nome = ?, orcamento = ?, descricao = ?, data = ?, categoria = ? WHERE  id = ?
+            `).run(nome, orcamento,descricao,data,categoria,id)
+            
+        console.log('projeto atualizado')
+        return res.json({menssage: 'Projeto atualizado'})
+    } catch (error) {
+        console.error('Erro ao atualizar projeto',error)
+        return res.status(500).json({error: 'Erro ao atualizar projeto'})
+    }
+})
 
 const port =  3001
 

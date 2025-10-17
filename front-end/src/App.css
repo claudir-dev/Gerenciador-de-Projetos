@@ -549,23 +549,52 @@
   justify-content: flex-end;
   margin-bottom: 20px;
 }
-.edita-nome, .edita-descricao, .edita-data,.edita-categoria label {
+.edita-nome, .edita-descricao, .edita-data,.edita-categoria , .edita-orcamento {
   display: flex;
   flex-direction: column;
-  
-} 
-.edita-nome, .edita-descricao, .edita-orcamento, .edita-data,.edita-categoria input {
   width: 100%;
-  margin-top: 10px;
+} 
+.edita-nome label, .edita-descricao label, .edita-data label,.edita-categoria label, .edita-orcamento label {
+  margin-bottom: 5px;
+  font-weight: bold; 
+}
+
+.edita-nome input, .edita-descricao input, .edita-orcamento input, .edita-data input,.edita-categoria input {
   padding: 10px;
+  border-radius: 4px;
+  border: solid 1px black;
+  outline: none;
 }
 .card-atualizar {
   width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   background-color: #f0f0f0;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+.edita-buton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+.edita-buton button {
+  padding: 10px 20px;
+  font-weight: bold;
+  background-color: rgb(31, 189, 31);
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.3s ease;cursor: pointer;
+}
+.edita-buton button:hover {
+  transform: scale(1.08);
+}
+.iconFechar {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.iconFechar:hover {
+  transform: scale(1.1);
+} 

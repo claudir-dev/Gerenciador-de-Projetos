@@ -1,6 +1,6 @@
 import React, { use } from "react"
 import { FaEnvelopeSquare } from "react-icons/fa"
-import { useSearchParams,useLocation } from 'react-router-dom'
+import { useSearchParams,useLocation, data } from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import Navbar from '../components/NevBar.jsx'
 import {FaTimes} from 'react-icons/fa'
@@ -53,6 +53,40 @@ export default function EditarProjeto () {
             )
         )
     }
+    const fecharCard = () => {
+        setdivEditar(false)
+    }
+    const atualizarProjeto = async () => {
+        
+        const dados = {
+            nome: arry[0].nome,
+            descricao: arry[0].descricao,
+            orcamento: arry[0].orcamento,
+            data: arry[0].data,
+            categoria: arry[0].categoria,
+            id: id
+        }
+        console.log(dados)
+        try {
+            const url = 'http://localhost:3001/Atualizar/projeto'
+
+            const enviar_atualizao = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify(dados)
+            })
+            const resposta_atualiza = await enviar_atualizao.json()
+            console.log(resposta_atualiza)
+            if(enviar_atualizao.ok) {
+
+            }
+        } catch (error) {
+            console.error('erro ao enviar dados para servidor', error)
+            alert('erro ao enviar dados para servidor')
+        }    
+    }
     return (
         <div className="conteiner">
             {divAparecer && (    
@@ -84,7 +118,7 @@ export default function EditarProjeto () {
                 {divEditar && (
                     <div className="card-atualizar">
                         <div  className="edita-icon">
-                            <FaTimes></FaTimes>
+                            <FaTimes onClick={fecharCard} className="iconFechar"></FaTimes>
                         </div>
                         <div>
                             {arry.map((proj) => (
@@ -95,11 +129,11 @@ export default function EditarProjeto () {
                                     </div>  
                                     <div className="edita-descricao">
                                         <label htmlFor="">Descrição do projeto: </label>
-                                        <input type="text" value={proj.descricao} onChange={(e) => atualizar(proj.id, 'descrição', e.target.value)} />
+                                        <input type="text" value={proj.descricao} onChange={(e) => atualizar(proj.id, 'descricao', e.target.value)} />
                                     </div> 
                                     <div className="edita-orcamento">
                                         <label htmlFor="">Orcçamento do projeto: </label>
-                                        <input type="number" style={{width: '100%'}} value={proj.orcamento} onChange={(e) => atualizar(proj.id, 'orcamento', e.target.value)}/>
+                                        <input type="number"  value={proj.orcamento} onChange={(e) => atualizar(proj.id, 'orcamento', e.target.value)}/>
                                     </div>  
                                     <div className="edita-data">
                                         <label htmlFor="">Data: </label>
@@ -110,7 +144,7 @@ export default function EditarProjeto () {
                                         <input type="text" placeholder="ex: pessoal..." value={proj.categoria}  onChange={(e)=> atualizar(proj.id,'categoria', e.target.value)} />
                                     </div>
                                     <div className="edita-buton">
-                                        <button>Atualizar</button>
+                                        <button onClick={atualizarProjeto}>Atualizar</button>
                                     </div>
                                 </div>    
                             ))}
