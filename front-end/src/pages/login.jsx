@@ -3,12 +3,16 @@ import "../App.css";
 import imgLogin from "../img/img-login2.png"; 
 import { FaEnvelope, FaEye, FaEyeSlash  } from "react-icons/fa"
 import {useNavigate, Link} from "react-router-dom"
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'; 
+import { jwtDecode } from "jwt-decode";
+
 export default function Login() {
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
     const [mostrarSenha, setMostrarSenha] = useState(false);
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
+   
     const Entrar = async (e) => {
         e.preventDefault()
         if (!email || !senha) {
@@ -50,13 +54,42 @@ export default function Login() {
         } finally {
             setLoading(false)
         }
-        
     }  
+
+    const ContinuarGoogle = async (Response) => {
+            console.log(Response)
+            const token = Response.credential
+            const dado = jwtDecode(token)
+            const googleEmail = dado.email 
+            console.log(googleEmail)
+        try {
+            const url = 'http://localhost:3001/api/continuar/google'
+            const enviar_servidor_googel = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({googleEmail})
+            })
+
+            const response = await enviar_servidor_googel.json()
+            if (enviar_servidor_googel.ok) {
+                navigate('/home')
+            }
+            else {
+                alert('erro interno no servidor') 
+            }
+        } catch (error) {
+            console.error('erro ao envair dados para servidor',error)
+            alert('error ao enviar dados para o servidor')
+        }
+    }
     return (
         <div className='containerLogin'>
             <div className='divLogoLogin'>
                 <img src={imgLogin} alt="logo"  className='imgLogin'/>
-                <h1>PROJECT MANAGER</h1>
+                <h1 className='title'>PROJECT MANAGER</h1>
             </div>
             <div>
                 <form onSubmit={Entrar} className='formLogin' autoComplete='on'>
@@ -91,6 +124,15 @@ export default function Login() {
                         <button type='submit'>
                             {loading ? 'Carregando...': 'Entrar'}
                         </button>
+                    </div>
+                    <div style={{marginTop: '20px'}}>
+                        <GoogleLogin
+                            onSuccess={ContinuarGoogle}
+                            onError={() => {
+                                console.log('Login falhou');
+                                alert('Erro no login com o google')
+                            }}
+                        />
                     </div>
                     {loading && <div className="loading-indicator"></div>}
                 </form>

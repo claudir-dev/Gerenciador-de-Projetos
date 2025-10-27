@@ -3,6 +3,8 @@ import "../App.css";
 import imgLogin from "../img/img-login2.png"; 
 import { FaEnvelope, FaEye, FaEyeSlash  } from "react-icons/fa"
 import {useNavigate} from "react-router-dom"
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode"; 
 export default function CriarConta() {
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
@@ -45,7 +47,35 @@ export default function CriarConta() {
         } finally {
             setloading(false)
         }
-    }  
+    } 
+    const ContinuarGoogle = async (reponse) => {
+        const token = reponse.credential
+        const dado = jwtDecode(token)
+        const googleEmail = dado.email
+
+        try {
+            const url = 'http://localhost:3001/api/continuar/google'
+            const enviar_servidor_googel = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({googleEmail})
+            })
+
+            const response = await enviar_servidor_googel.json()
+            if (enviar_servidor_googel.ok) {
+                navegate('/home')
+            }
+            else {
+                alert('erro interno no servidor') 
+            }
+        } catch (error) {
+            console.error('erro ao envair dados para servidor',error)
+            alert('error ao enviar dados para o servidor')
+        }
+    }
             
     return (
         <div className='containerLogin'>
@@ -82,6 +112,17 @@ export default function CriarConta() {
                         <button type='submit' >
                             {loading ? 'Carrregando' : 'Criar conta'}
                         </button>
+                    </div>
+                    <div style={{marginTop: '20px'}}>
+                        <GoogleLogin 
+                            onSuccess={ContinuarGoogle}
+                            onError={() => {
+                                console.log('login falhou')
+                                alert('Erro no login google')
+                            }}
+                        >
+                            
+                        </GoogleLogin>
                     </div>
                     {loading && <div className='loading-indicator'></div>}
                 </form>

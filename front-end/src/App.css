@@ -124,14 +124,15 @@
   width: 50px;
 }
 
-.linkprojetos {
+.lista {
+  display: flex;
+}
+.lista-link {
   text-decoration: none;
   color: orangered;
   font-weight: bold;
 }
-.linkprojetos:hover {
-  text-decoration: underline;
-}
+
 .divImgHome {
   display: flex;
   flex-direction: column;
@@ -583,7 +584,7 @@
 .edita-buton button {
   padding: 10px 20px;
   font-weight: bold;
-  background-color: rgb(31, 189, 31);
+  background-color: rgb(18, 241, 18);
   border: none;
   border-radius: 5px;
   transition: transform 0.3s ease;cursor: pointer;
@@ -598,3 +599,118 @@
 .iconFechar:hover {
   transform: scale(1.1);
 } 
+.conteine_atualizado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.card_projeto_atualizado {
+  width: 50%;
+  text-align: center;
+  background-color: rgb(24, 208, 24);
+  padding: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  animation: mover-para-baixo 2s infinite alternate;
+}
+@keyframes mover-para-baixo {
+  from {
+    transform: translateY(0);
+  } 
+  to {
+    transform: translatey(50px);
+  }
+}
+.icone_bras {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+.lista-mobile  {
+  display: none;
+}
+.lista-mobile-link {
+  text-decoration: none;
+  color: orangered;
+  font-weight: bold;
+}
+@media screen and (max-width: 767px ) {
+  .title {
+    font-size: 1.7rem;
+  }
+  .title-hone {
+    text-align: center;
+  }
+  .icone_bras {
+    display: block;
+  }
+  .lista {
+    display: none;
+  }
+  .lista-mobile.ativo {
+    display: block;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);  
+    padding: 10px;
+    width: 50%;
+    border-top-left-radius:10px;
+    border-bottom-left-radius:10px;
+    position: absolute;
+    left: 180px;
+    z-index: 999
+  }
+
+  .Pesquisa {
+    margin-top: -250px;
+    display: flex;
+    flex-direction: column;
+  }
+  .input {
+    width: 80%;
+  }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+  .div-btn-criarProjeto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-top: 110px;
+    width: 170.94px;
+  }
+  .btn-criarProjeto {
+    display: flex;
+    text-align: center;
+  }
+  .icon {
+    position: absolute;
+    left: 300px;
+    bottom: 460px;
+  }
+  .card-filtros {
+    position: absolute;
+    right: 5px;
+  }
+  .div-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn_editar {
+    margin-top: 50px;
+  }
+
+
+}
+@media screen and (max-width: 360px) {
+  .icon {
+    position: absolute;
+    left: 300px;
+    bottom: 460px;
+  }
+}

@@ -94,9 +94,6 @@ export default function Projeto () {
             setLoading(false) 
         }
     }
-    const edita_projeto = async () => {
-
-    }
     return (
         <div className="ConteinerPai">
             <div>
@@ -109,7 +106,7 @@ export default function Projeto () {
                 <h3>Filtros</h3>
                 <div className="div-campos">
                     <label htmlFor="">Nome:</label>
-                    <input type="text" placeholder="Buscar por nome..." value={FiltrosNome} onChange={(e) => setFiltrosNome(e.target.value)} />
+                    <input type="text"  placeholder="Buscar por nome..." value={FiltrosNome} onChange={(e) => setFiltrosNome(e.target.value)} />
                 </div>
                 <div className="div-campos">
                     <label htmlFor="">Descrição:</label>
@@ -129,12 +126,12 @@ export default function Projeto () {
                     </button>
                 </div>
             </div>}
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <h1>Meus Projetos</h1>
+            </div>
             <div className="Pesquisa">
-                <div className="icon">
-                    <FaSearch></FaSearch>
-                </div>
                 <div className="input">
-                    <input type="text" placeholder='Buscar projeto...' value={projeto} onChange={(e) => setProjeto(e.target.value)}/>
+                    <input type="text" className="inputBucar" placeholder='Buscar projeto...' value={projeto} onChange={(e) => setProjeto(e.target.value)}/>
     
                 </div>
                 <div className="btn">
@@ -153,7 +150,9 @@ export default function Projeto () {
             </div>
             <div className="main" style={{marginTop: '60px'}}>
                 <div className="btn_div">
-                    {Loading && <div className='loading-indicator'></div> }
+                    {Loading && <div className='loading-indicator'>
+
+                    </div> }
                     {Aparecer && (
                     <div className="div-cards">
                         {resgata.map((item, i) => (

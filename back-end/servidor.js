@@ -370,6 +370,41 @@ app.post('/Atualizar/projeto', (req,res) => {
         return res.status(500).json({error: 'Erro ao atualizar projeto'})
     }
 })
+app.post('/api/continuar/google', (req,res) => {
+    const {googleEmail} = req.body
+    console.log(googleEmail)
+    try {
+        const logar = db.prepare(`
+                SELECT * FROM usuarios WHERE email = ?
+            `).get(googleEmail)
+
+        if(logar) {
+            console.log('usuarios logado')
+            req.session.userId = logar.id
+            console.log('id usuario: ', req.session.userId)
+            return res.json({message: 'usario logado'})
+        }    
+        else {
+            try {
+                const googleCadastro = db.prepare(`
+                        INSERT INTO usuarios (email) VALUES (?)
+                    `).run(googleEmail)
+                console.log('Usuario cadastrado com sucesso')
+                req.session.userId = googleCadastro.id
+                console.log('id usuario: ', req.session.userId)
+                return res.json({message: 'usuario cadastrado com sucessso'})    
+
+            } catch (error) {
+                console.log('Error ao cadastra usuario')
+                return res.status(500).json({error: 'Error ao cadastra usuario'})
+            }
+        }
+
+    } catch (error) {
+        console.error('erro ao na autenticação do google')
+        res.status(500).json({error: 'erro ao na autenticação do google'})
+    }
+})
 
 const port =  3001
 

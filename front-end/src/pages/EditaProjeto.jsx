@@ -4,6 +4,7 @@ import { useSearchParams,useLocation, data } from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import Navbar from '../components/NevBar.jsx'
 import {FaTimes} from 'react-icons/fa'
+import ProjetoAtualizado from "../components/ProjetoAtualizado.jsx"
 export default function EditarProjeto () {
     const [SearchParams] = useSearchParams()
     const [divAparecer, setdivAparecer] = useState(false)
@@ -11,6 +12,7 @@ export default function EditarProjeto () {
     const [divEditar, setdivEditar] = useState(false)
     const [arry,setarray] = useState([])
     const id = SearchParams.get('id')
+    const [mostra, setmostra] = useState(false)
     useEffect(() => {
         const busca_edita = async () => {
             try {
@@ -80,7 +82,13 @@ export default function EditarProjeto () {
             const resposta_atualiza = await enviar_atualizao.json()
             console.log(resposta_atualiza)
             if(enviar_atualizao.ok) {
-
+                setTimeout(() => {
+                    setmostra(false)
+                    setdivEditar(true)
+                    window.location.reload()
+                },5000)
+                setdivEditar(false)
+                setmostra(true)
             }
         } catch (error) {
             console.error('erro ao enviar dados para servidor', error)
@@ -97,8 +105,8 @@ export default function EditarProjeto () {
                 {captura.map((item) => (
                     <div className="edita_card" key={item.id}>
                         <div className="title">
-                            <h1>Projeto: {item.nome}</h1>
-                            <button className="btn_editar" onClick={editar} style={{marginRight: '20px'}}>Editar</button>
+                            <p><strong>Nome: {item.nome}</strong></p>
+                            <button className="btn_editar" onClick={editar} style={{marginRight: '20px',marginTop: '2 0px'}}>Editar</button>
                         </div>    
                         <div className="dados">
                             <p><strong>Descrição:</strong> {item.descricao}</p>
@@ -112,7 +120,10 @@ export default function EditarProjeto () {
                 </div>
             </div>
             )}
-
+            {mostra && (
+                <ProjetoAtualizado></ProjetoAtualizado>
+            )}
+                
             <div className="div-atualizaar">
 
                 {divEditar && (
